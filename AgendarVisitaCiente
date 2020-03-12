@@ -1,0 +1,31 @@
+/*
+RABD : 20200311 - Agendar visitas a clientes.
+ */
+function AgendarVisita() {
+    var calendarId = CalendarApp.getCalendarById('ikt7a90l129l4ir53klvkcld7c@group.calendar.google.com');
+  // Tomar los datos de la fila actual de las citas programadas  
+  var gSheet = SpreadsheetApp.getActiveSpreadsheet();
+  var cell = gSheet.getDataRange().toString();
+  var range = gSheet.getActiveRange();
+  var actrow = range.getRow();
+  var range = gSheet.getRange('B'+ actrow + ':E'+ actrow);
+  var celda = range.getCell(1, 1);
+  var cliente = celda.getValue();
+  var celda = range.getCell(1, 2);
+  var tecnico = celda.getValue();
+  var celda = range.getCell(1, 3);
+  var horai = celda.getValue();
+  var celda = range.getCell(1, 4);
+  var horaf = celda.getValue();
+  // Creates an event for the moon landing and logs the ID.
+  var event = calendarId.createEvent('Cita para '+ cliente, horai, horaf, {description: 'Tecnico asignado' + tecnico });
+
+  //Escribe resultados en log de eventos.
+  Logger.log('Cliente: ' + cliente);
+  Logger.log('Tecnico: ' + tecnico );
+  Logger.log('Tecnico: ' + horai );
+  Logger.log('Tecnico: ' + horaf );
+  
+  // Logger.log('Cliente: ' + event.getId());
+  
+}
