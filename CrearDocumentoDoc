@@ -1,0 +1,6 @@
+function CreacionDocumento() {
+  var doc = DocumentApp.create("COTIZA01");
+  doc.getBody().appendParagraph("HOLA A TODOS");
+  doc.getBody().appendParagraph("Adios a todos ");
+ 
+}
