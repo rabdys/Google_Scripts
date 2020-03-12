@@ -1,0 +1,45 @@
+/**
+ * Lists 10 upcoming events in the user's calendar.
+ */
+function listUpcomingEvents() {
+  /* var calendarId = 'primary'; */
+  /* var calendarId = 'cq0f49ojsjootv6f6fdmddsjso@group.calendar.google.com'; */
+  var calendarId = 'contactenos.innovar@gmail.com';
+  var optionalArgs = {
+    timeMin: (new Date()).toISOString(),
+    showDeleted: false,
+    singleEvents: true,
+    maxResults: 10,
+    orderBy: 'startTime'
+  };
+  
+  /* var today = new Date(); */
+  var today = new Date('March 03, 2020 01:00:00 UTC');
+  
+  var events = CalendarApp.getDefaultCalendar().getEventsForDay(today);
+  Logger.log('Number of events: ' + events.length);
+  
+  /*Crear evento xxx */
+  // Creates an event for the moon landing and logs the ID.
+var event = CalendarApp.getDefaultCalendar().createEvent('Apollo 12 Landing',
+                                                         new Date('March 03, 2020 20:00:00 UTC'),
+                                                         new Date('March 03, 2020 21:10:00 UTC'),
+                                                         {location: 'The Moon'});
+
+  Logger.log('Event ID: ' + event.getId());
+  
+  /*var response = Calendar.Events.list(calendarId, optionalArgs);
+  var events = response.items;
+  if (events.length > 0) {
+    for (i = 0; i < events.length; i++) {
+      var event = events[i];
+      var when = event.start.dateTime;
+      if (!when) {
+        when = event.start.date;
+      }
+      Logger.log('%s (%s)', event.summary, when);
+    }
+    } else {
+    Logger.log('No hay eventos pendientes.');
+  }*/
+}
